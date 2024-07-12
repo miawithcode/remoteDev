@@ -1,4 +1,5 @@
 import Background from "./components/Background";
+import JobContent from "./components/JobContent";
 import Header from "./components/layouts/Header";
 import Main from "./components/layouts/Main";
 import SearchForm from "./components/SearchForm";
@@ -12,9 +13,9 @@ const App = () => {
 
         <div className="rounded-lg border border-slate-200 bg-white">
           <SearchForm />
-          <div>
+          <div className="flex h-full">
             <Sidebar />
-            {/* <JobDetail /> */}
+            <JobContent />
           </div>
         </div>
       </Main>
