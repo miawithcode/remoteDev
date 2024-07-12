@@ -4,10 +4,8 @@ type MainProps = {
 
 const Main = ({ children }: MainProps) => {
   return (
-    <main className="relative flex max-h-screen w-full flex-col items-center">
-      <div className="w-full max-w-screen-lg flex-1 flex-grow px-8">
-        {children}
-      </div>
+    <main className="relative flex min-h-screen w-full flex-col items-center py-16">
+      <div className="w-full max-w-screen-lg px-8">{children}</div>
     </main>
   );
 };
