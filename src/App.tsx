@@ -1,5 +1,6 @@
 import Background from "./components/Background";
 import JobContent from "./components/JobContent";
+import Footer from "./components/layouts/Footer";
 import Header from "./components/layouts/Header";
 import Main from "./components/layouts/Main";
 import SearchForm from "./components/SearchForm";
@@ -18,6 +19,8 @@ const App = () => {
             <JobContent />
           </div>
         </div>
+
+        <Footer />
       </Main>
     </Background>
   );
