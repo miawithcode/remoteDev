@@ -3,7 +3,7 @@ import Logo from "../Logo";
 
 const Header = () => {
   return (
-    <header className="flex items-baseline justify-between pt-12">
+    <header className="flex items-baseline justify-between py-8">
       <Logo />
       <BookmarkButton />
     </header>
