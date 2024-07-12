@@ -1,9 +1,11 @@
+import BookmarkButton from "../BookmarkButton";
 import Logo from "../Logo";
 
 const Header = () => {
   return (
-    <header className="pt-12">
+    <header className="flex items-baseline justify-between pt-12">
       <Logo />
+      <BookmarkButton />
     </header>
   );
 };
