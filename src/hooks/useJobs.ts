@@ -23,7 +23,7 @@ const useJobs = (searchText: string) => {
     fetchJobs();
   }, [searchText]);
 
-  return { slicedJobs, isLoading };
+  return [slicedJobs, isLoading] as const;
 };
 
 export default useJobs;
