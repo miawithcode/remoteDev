@@ -1,8 +1,8 @@
 const Logo = () => {
   return (
-    <h1 className="text-xl">
+    <a className="text-xl" href=".">
       remote<span className="font-semibold">Dev</span>
-    </h1>
+    </a>
   );
 };
 export default Logo;
