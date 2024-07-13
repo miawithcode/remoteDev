@@ -3,6 +3,7 @@ const JobContent = () => {
 
   return <section>JobContent</section>;
 };
+
 export default JobContent;
 
 const EmptyJobContent = () => {

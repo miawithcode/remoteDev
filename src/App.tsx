@@ -7,6 +7,7 @@ import Main from "./components/layouts/Main";
 import SearchForm from "./components/SearchForm";
 import Sidebar from "./components/Sidebar";
 import { TJob } from "./lib/types";
+import { URL } from "./lib/constants";
 
 const App = () => {
   const [searchText, setSearchText] = useState("");
@@ -32,7 +33,7 @@ const App = () => {
         <div className="rounded-lg border border-slate-200 bg-white">
           <SearchForm setSearchText={setSearchText} searchText={searchText} />
           <div className="flex h-full">
-            <Sidebar />
+            <Sidebar jobs={jobs} />
             <JobContent />
           </div>
         </div>
