@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { TJob } from "../lib/types";
-import { URL } from "../lib/constants";
+import { BASE_API_URL } from "../lib/constants";
 
 const useJobs = (searchText: string) => {
   const [jobs, setJobs] = useState<TJob[]>([]);
@@ -14,7 +14,7 @@ const useJobs = (searchText: string) => {
     const fetchJobs = async () => {
       setIsLoading(true);
 
-      const response = await fetch(`${URL}?search=${searchText}`);
+      const response = await fetch(`${BASE_API_URL}?search=${searchText}`);
       const data = await response.json();
       setIsLoading(false);
       setJobs(data.jobItems);
