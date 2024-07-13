@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Background from "./components/Background";
 import JobContent from "./components/JobContent";
 import Footer from "./components/layouts/Footer";
@@ -6,28 +6,11 @@ import Header from "./components/layouts/Header";
 import Main from "./components/layouts/Main";
 import SearchForm from "./components/SearchForm";
 import Sidebar from "./components/Sidebar";
-import { TJob } from "./lib/types";
-import { URL } from "./lib/constants";
+import useJobs from "./hooks/useJobs";
 
 const App = () => {
   const [searchText, setSearchText] = useState("");
-  const [jobs, setJobs] = useState<TJob[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    if (!searchText) return;
-
-    const fetchJobs = async () => {
-      setIsLoading(true);
-
-      const response = await fetch(`${URL}?search=${searchText}`);
-      const data = await response.json();
-      setIsLoading(false);
-      setJobs(data.jobItems);
-    };
-
-    fetchJobs();
-  }, [searchText]);
+  const { jobs, isLoading } = useJobs(searchText);
 
   return (
     <Background>
