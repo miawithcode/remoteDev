@@ -1,16 +1,18 @@
 import { TJob } from "../../lib/types";
+import Loading from "../Loading";
 import JobItem from "./JobItem";
 
 type JobListProps = {
   jobs: TJob[];
+  isLoading: boolean;
 };
 
-const JobList = ({ jobs }: JobListProps) => {
+const JobList = ({ jobs, isLoading }: JobListProps) => {
   return (
     <ul className="min-h-[50vh]">
-      {jobs.map((job) => (
-        <JobItem key={job.id} job={job} />
-      ))}
+      {isLoading && <Loading />}
+
+      {!isLoading && jobs.map((job) => <JobItem key={job.id} job={job} />)}
     </ul>
   );
 };

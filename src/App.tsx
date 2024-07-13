@@ -12,13 +12,17 @@ import { URL } from "./lib/constants";
 const App = () => {
   const [searchText, setSearchText] = useState("");
   const [jobs, setJobs] = useState<TJob[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (!searchText) return;
 
     const fetchJobs = async () => {
+      setIsLoading(true);
+
       const response = await fetch(`${URL}?search=${searchText}`);
       const data = await response.json();
+      setIsLoading(false);
       setJobs(data.jobItems);
     };
 
@@ -33,7 +37,7 @@ const App = () => {
         <div className="rounded-lg border border-slate-200 bg-white">
           <SearchForm setSearchText={setSearchText} searchText={searchText} />
           <div className="flex h-full">
-            <Sidebar jobs={jobs} />
+            <Sidebar jobs={jobs} isLoading={isLoading} />
             <JobContent />
           </div>
         </div>
