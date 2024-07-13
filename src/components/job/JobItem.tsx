@@ -7,7 +7,7 @@ type JobItemProps = {
 
 const JobItem = ({ job }: JobItemProps) => {
   return (
-    <li className="flex w-full cursor-pointer items-start gap-3 border-b px-2 py-4 transition last:border-b-0 hover:bg-slate-100">
+    <li className="flex w-full cursor-pointer items-start gap-3 border-b px-2 py-3 transition last:border-b-0 hover:bg-slate-100">
       <div className="grid h-10 w-10 place-content-center rounded-[4px] border border-black font-semibold">
         {job.badgeLetters}
       </div>
