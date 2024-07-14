@@ -7,12 +7,10 @@ import Main from "./components/layouts/Main";
 import SearchForm from "./components/SearchForm";
 import Sidebar from "./components/Sidebar";
 import useJobs from "./hooks/useJobs";
-import useActiveJobItem from "./hooks/useActiveJobItem";
 
 const App = () => {
   const [searchText, setSearchText] = useState("");
   const [jobs, isLoading] = useJobs(searchText);
-  const jobItem = useActiveJobItem();
 
   return (
     <Background>

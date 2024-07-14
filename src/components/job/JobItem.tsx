@@ -14,7 +14,7 @@ const JobItem = ({ job }: JobItemProps) => {
         </div>
         <div className="flex-1">
           <h3 className="font-semibold">{job.title}</h3>
-          <p className="text-sm tracking-tight">{job.company}</p>
+          <p className="text-sm tracking-tight text-slate-800">{job.company}</p>
           <p className="text-sm text-slate-400">{job.daysAgo}d</p>
         </div>
         <div>
