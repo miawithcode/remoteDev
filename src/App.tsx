@@ -7,10 +7,13 @@ import Main from "./components/layouts/Main";
 import SearchForm from "./components/SearchForm";
 import Sidebar from "./components/Sidebar";
 import useJobs from "./hooks/useJobs";
+import useDebounce from "./hooks/useDebounce";
 
 const App = () => {
   const [searchText, setSearchText] = useState("");
-  const { slicedJobs, isLoading, totalNumberOfResults } = useJobs(searchText);
+  const debouncedSearchText = useDebounce(searchText, 250);
+  const { slicedJobs, isLoading, totalNumberOfResults } =
+    useJobs(debouncedSearchText);
 
   return (
     <Background>
