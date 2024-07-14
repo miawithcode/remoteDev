@@ -7,7 +7,7 @@ const useJobs = (searchText: string) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const totalNumberOfResults = jobs.length;
-  const slicedJobs = jobs.slice(0, 6);
+  const jobsSliced = jobs.slice(0, 6);
 
   useEffect(() => {
     if (!searchText) return;
@@ -24,7 +24,7 @@ const useJobs = (searchText: string) => {
     fetchJobs();
   }, [searchText]);
 
-  return [slicedJobs, isLoading, totalNumberOfResults] as const;
+  return { jobsSliced, isLoading, totalNumberOfResults } as const;
 };
 
 export default useJobs;

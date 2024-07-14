@@ -5,6 +5,6 @@ const useActiveJobItem = () => {
   const activeId = useActiveId();
   const { jobItem, isLoading } = useJobItem(activeId);
 
-  return { jobItem, isLoading };
+  return { jobItem, isLoading } as const;
 };
 export default useActiveJobItem;
