@@ -1,13 +1,19 @@
 import { BookmarkIcon } from "@radix-ui/react-icons";
 import { TJob } from "../../lib/types";
+import useActiveId from "../../hooks/useActiveId";
 
 type JobItemProps = {
   job: TJob;
 };
 
 const JobItem = ({ job }: JobItemProps) => {
+  const activeId = useActiveId();
+  const isActive = activeId === job.id;
+
   return (
-    <li className="w-full cursor-pointer gap-3 border-b px-2 py-3 transition last:border-b-0 hover:bg-slate-100">
+    <li
+      className={`w-full cursor-pointer gap-3 border-b px-2 py-3 transition last:border-b-0 hover:bg-slate-50 ${isActive && "bg-slate-50"}`}
+    >
       <a href={`#${job.id}`} className="flex w-full items-start gap-3">
         <div className="grid h-10 w-10 place-content-center rounded-[4px] border border-black font-semibold">
           {job.badgeLetters}
