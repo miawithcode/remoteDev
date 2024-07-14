@@ -1,9 +1,12 @@
 import { ClockIcon, MapPinIcon, WalletIcon } from "@heroicons/react/24/outline";
 import { BookmarkIcon } from "@radix-ui/react-icons";
 import useActiveJobItem from "../hooks/useActiveJobItem";
+import Loading from "./Loading";
 
 const JobContent = () => {
-  const jobItem = useActiveJobItem();
+  const { jobItem, isLoading } = useActiveJobItem();
+
+  if (isLoading) return <Loading height="jobContent" />;
 
   if (!jobItem) return <EmptyJobContent />;
 

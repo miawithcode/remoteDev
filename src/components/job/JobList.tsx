@@ -10,7 +10,7 @@ type JobListProps = {
 const JobList = ({ jobs, isLoading }: JobListProps) => {
   return (
     <ul className="min-h-[62vh]">
-      {isLoading && <Loading />}
+      {isLoading && <Loading height="jobList" />}
 
       {!isLoading && jobs.map((job) => <JobItem key={job.id} job={job} />)}
     </ul>

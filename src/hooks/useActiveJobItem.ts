@@ -3,8 +3,8 @@ import useJobItem from "./useJobItem";
 
 const useActiveJobItem = () => {
   const activeId = useActiveId();
-  const jobItem = useJobItem(activeId);
+  const { jobItem, isLoading } = useJobItem(activeId);
 
-  return jobItem;
+  return { jobItem, isLoading };
 };
 export default useActiveJobItem;

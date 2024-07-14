@@ -1,6 +1,17 @@
-const Loading = () => {
+type LoadingProps = {
+  height: "jobList" | "jobContent";
+};
+
+const Loading = ({ height }: LoadingProps) => {
+  const heightClass = {
+    jobList: "min-h-[62vh]",
+    jobContent: "658px",
+  };
+
   return (
-    <div className="grid min-h-[62vh] w-full place-items-center overflow-x-scroll rounded-lg p-6 lg:overflow-visible">
+    <div
+      className={`grid flex-1 place-items-center overflow-x-scroll rounded-lg p-6 lg:overflow-visible ${heightClass[height]}`}
+    >
       <svg
         className="animate-spin text-gray-300"
         viewBox="0 0 64 64"
