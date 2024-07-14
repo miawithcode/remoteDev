@@ -52,7 +52,10 @@ const JobContent = () => {
         <h4 className="border-b py-1 text-lg font-semibold">Required Skills</h4>
         <ul className="flex flex-wrap gap-2">
           {jobItem.qualifications.map((qualification) => (
-            <li className="inline-block text-nowrap rounded-[4px] border px-2 py-1 text-sm">
+            <li
+              key={qualification}
+              className="inline-block text-nowrap rounded-[4px] border px-2 py-1 text-sm"
+            >
               {qualification}
             </li>
           ))}
@@ -63,7 +66,9 @@ const JobContent = () => {
         <h4 className="border-b py-1 text-lg font-semibold">Company Reviews</h4>
         <ul>
           {jobItem.reviews.map((review) => (
-            <li className="list-inside list-disc">{review}</li>
+            <li key={review} className="list-inside list-disc">
+              {review}
+            </li>
           ))}
         </ul>
       </div>
