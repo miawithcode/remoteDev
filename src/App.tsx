@@ -10,7 +10,7 @@ import useJobs from "./hooks/useJobs";
 
 const App = () => {
   const [searchText, setSearchText] = useState("");
-  const [jobs, isLoading] = useJobs(searchText);
+  const [jobs, isLoading, totalNumberOfResults] = useJobs(searchText);
 
   return (
     <Background>
@@ -20,7 +20,11 @@ const App = () => {
         <div className="rounded-lg border border-slate-200 bg-white">
           <SearchForm setSearchText={setSearchText} searchText={searchText} />
           <div className="flex h-full">
-            <Sidebar jobs={jobs} isLoading={isLoading} />
+            <Sidebar
+              jobs={jobs}
+              isLoading={isLoading}
+              totalNumberOfResults={totalNumberOfResults}
+            />
             <JobContent />
           </div>
         </div>

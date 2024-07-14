@@ -6,6 +6,7 @@ const useJobs = (searchText: string) => {
   const [jobs, setJobs] = useState<TJob[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
+  const totalNumberOfResults = jobs.length;
   const slicedJobs = jobs.slice(0, 6);
 
   useEffect(() => {
@@ -23,7 +24,7 @@ const useJobs = (searchText: string) => {
     fetchJobs();
   }, [searchText]);
 
-  return [slicedJobs, isLoading] as const;
+  return [slicedJobs, isLoading, totalNumberOfResults] as const;
 };
 
 export default useJobs;
