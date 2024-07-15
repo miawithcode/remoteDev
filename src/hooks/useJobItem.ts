@@ -1,6 +1,7 @@
 import { BASE_API_URL } from "../lib/constants";
 import { type TJobItem } from "../lib/types";
 import { useQuery } from "@tanstack/react-query";
+import { handleError } from "../lib/utils";
 
 type TJobItemAPIResponse = {
   public: boolean;
@@ -48,9 +49,7 @@ const useJobItem = (id: number | null) => {
       refetchOnWindowFocus: false,
       retry: false,
       enabled: Boolean(id),
-      onError: (error) => {
-        console.log(error);
-      },
+      onError: handleError,
     },
   );
 

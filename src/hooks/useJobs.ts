@@ -1,6 +1,7 @@
 import { TJob } from "../lib/types";
 import { BASE_API_URL } from "../lib/constants";
 import { useQuery } from "@tanstack/react-query";
+import { handleError } from "../lib/utils";
 
 type JobsAPIResponse = {
   public: boolean;
@@ -30,9 +31,7 @@ const useJobs = (searchText: string) => {
       refetchOnWindowFocus: false,
       retry: false,
       enabled: Boolean(searchText), // Only fetch when there is a search text
-      onError: (error) => {
-        console.log(error);
-      },
+      onError: handleError,
     },
   );
 

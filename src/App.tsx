@@ -8,6 +8,7 @@ import SearchForm from "./components/SearchForm";
 import Sidebar from "./components/Sidebar";
 import useJobs from "./hooks/useJobs";
 import useDebounce from "./hooks/useDebounce";
+import { Toaster } from "sonner";
 
 const App = () => {
   const [searchText, setSearchText] = useState("");
@@ -36,6 +37,8 @@ const App = () => {
 
         <Footer />
       </Main>
+
+      <Toaster position="top-right" richColors />
     </Background>
   );
 };
