@@ -2,6 +2,8 @@
 
 > Remote job platform for developers using React
 
+![](./public/screenshot.png)
+
 <div align="center">
   <a href="" target="_blank"></a>
 </div>
