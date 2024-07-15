@@ -17,7 +17,7 @@ const JobContent = () => {
           <div className="flex items-center gap-3">
             <a
               href={jobItem.companyURL}
-              className="grid h-14 w-14 place-content-center rounded-[4px] border border-black font-semibold hover:bg-slate-50"
+              className="grid h-14 w-14 place-content-center rounded border border-black font-semibold hover:bg-slate-50"
             >
               {jobItem.badgeLetters}
             </a>
@@ -54,7 +54,7 @@ const JobContent = () => {
           {jobItem.qualifications.map((qualification) => (
             <li
               key={qualification}
-              className="inline-block text-nowrap rounded-[4px] border px-2 py-1 text-sm"
+              className="inline-block text-nowrap rounded border px-2 py-1 text-sm"
             >
               {qualification}
             </li>

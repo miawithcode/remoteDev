@@ -8,9 +8,19 @@ type SidebarProps = {
   jobs: TJob[];
   isLoading: boolean;
   totalNumberOfResults: number;
+  totalNumberOfPages: number;
+  handlePageChange: (direction: "next" | "previous") => void;
+  currentPage: number;
 };
 
-const Sidebar = ({ jobs, isLoading, totalNumberOfResults }: SidebarProps) => {
+const Sidebar = ({
+  jobs,
+  isLoading,
+  totalNumberOfResults,
+  totalNumberOfPages,
+  handlePageChange,
+  currentPage,
+}: SidebarProps) => {
   return (
     <aside className="relative w-80 border-r border-slate-200">
       <div className="flex justify-between border-b border-slate-200 p-2 text-sm">
@@ -18,7 +28,11 @@ const Sidebar = ({ jobs, isLoading, totalNumberOfResults }: SidebarProps) => {
         <SortingControls />
       </div>
       <JobList jobs={jobs} isLoading={isLoading} />
-      <PaginationControls />
+      <PaginationControls
+        handlePageChange={handlePageChange}
+        currentPage={currentPage}
+        totalNumberOfPages={totalNumberOfPages}
+      />
     </aside>
   );
 };

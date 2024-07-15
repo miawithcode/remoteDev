@@ -15,7 +15,7 @@ const JobItem = ({ job }: JobItemProps) => {
       className={`w-full cursor-pointer gap-3 border-b px-2 py-3 transition last:border-b-0 hover:bg-slate-50 ${isActive && "bg-slate-50"}`}
     >
       <a href={`#${job.id}`} className="flex w-full items-start gap-3">
-        <div className="grid h-10 w-10 place-content-center rounded-[4px] border border-black font-semibold">
+        <div className="grid h-10 w-10 place-content-center rounded border border-black font-semibold">
           {job.badgeLetters}
         </div>
         <div className="flex-1">
