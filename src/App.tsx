@@ -12,8 +12,10 @@ import useDebounce from "./hooks/useDebounce";
 const App = () => {
   const [searchText, setSearchText] = useState("");
   const debouncedSearchText = useDebounce(searchText, 250);
-  const { slicedJobs, isLoading, totalNumberOfResults } =
-    useJobs(debouncedSearchText);
+  const { jobs, isLoading } = useJobs(debouncedSearchText);
+
+  const totalNumberOfResults = jobs.length;
+  const slicedJobs = jobs.slice(0, 6);
 
   return (
     <Background>
