@@ -14,8 +14,8 @@ const App = () => {
   const debouncedSearchText = useDebounce(searchText, 250);
   const { jobs, isLoading } = useJobs(debouncedSearchText);
 
-  const totalNumberOfResults = jobs.length;
-  const slicedJobs = jobs.slice(0, 6);
+  const totalNumberOfResults = jobs?.length || 0;
+  const slicedJobs = jobs?.slice(0, 6) || [];
 
   return (
     <Background>

@@ -54,8 +54,6 @@ const useJobItem = (id: number | null) => {
     },
   );
 
-  const jobItem = data?.jobItem;
-  const isLoading = isInitialLoading;
-  return { jobItem, isLoading } as const;
+  return { jobItem: data?.jobItem, isLoading: isInitialLoading } as const;
 };
 export default useJobItem;

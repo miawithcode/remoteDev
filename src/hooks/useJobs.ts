@@ -1,27 +1,42 @@
-import { useEffect, useState } from "react";
 import { TJob } from "../lib/types";
 import { BASE_API_URL } from "../lib/constants";
+import { useQuery } from "@tanstack/react-query";
+
+type JobsAPIResponse = {
+  public: boolean;
+  sorted: boolean;
+  jobItems: TJob[];
+};
+
+// Fetching function
+const fetchJobs = async (searchText: string): Promise<JobsAPIResponse> => {
+  const response = await fetch(`${BASE_API_URL}?search=${searchText}`);
+  // 4xx or 5xx
+  if (!response.ok) {
+    const errorMessage = await response.json();
+    throw new Error(errorMessage.description);
+  }
+
+  const data = await response.json();
+  return data;
+};
 
 const useJobs = (searchText: string) => {
-  const [jobs, setJobs] = useState<TJob[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const { data, isInitialLoading } = useQuery(
+    ["jobs", searchText],
+    () => fetchJobs(searchText),
+    {
+      staleTime: 1000 * 60 * 60,
+      refetchOnWindowFocus: false,
+      retry: false,
+      enabled: Boolean(searchText), // Only fetch when there is a search text
+      onError: (error) => {
+        console.log(error);
+      },
+    },
+  );
 
-  useEffect(() => {
-    if (!searchText) return;
-
-    const fetchJobs = async () => {
-      setIsLoading(true);
-
-      const response = await fetch(`${BASE_API_URL}?search=${searchText}`);
-      const data = await response.json();
-      setIsLoading(false);
-      setJobs(data.jobItems);
-    };
-
-    fetchJobs();
-  }, [searchText]);
-
-  return { jobs, isLoading } as const;
+  return { jobs: data?.jobItems, isLoading: isInitialLoading } as const;
 };
 
 export default useJobs;
