@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext } from "react";
 import useLocalStorage from "../hooks/useLocalStorage";
 
 export const BookmarkContext = createContext<TBookmarkContext | null>(null);
@@ -15,13 +15,11 @@ type TBookmarkContext = {
 const BookmarkContextProvider = ({
   children,
 }: BookmarkContextProviderProps) => {
-  // state
   const [bookmarkIds, setBookmarkIds] = useLocalStorage<number[]>(
     "bookmarkIds",
     [],
   );
 
-  // event handler / actions
   const handleToggleBookmark = (id: number) => {
     if (bookmarkIds.includes(id)) {
       setBookmarkIds((prev) => prev.filter((item) => item !== id));
