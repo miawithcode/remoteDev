@@ -1,6 +1,6 @@
-import { BookmarkIcon } from "@radix-ui/react-icons";
 import { type TJob } from "../../lib/types";
 import useActiveId from "../../hooks/useActiveId";
+import BookmarkIconButton from "../bookmark/BookmarkIconButton";
 
 type JobItemProps = {
   job: TJob;
@@ -24,9 +24,7 @@ const JobItem = ({ job }: JobItemProps) => {
           <p className="text-sm text-slate-400">{job.daysAgo}d</p>
         </div>
         <div>
-          <button>
-            <BookmarkIcon />
-          </button>
+          <BookmarkIconButton />
         </div>
       </a>
     </li>

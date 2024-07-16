@@ -1,7 +1,7 @@
 import { ClockIcon, MapPinIcon, WalletIcon } from "@heroicons/react/24/outline";
-import { BookmarkIcon } from "@radix-ui/react-icons";
 import useActiveJobItem from "../hooks/useActiveJobItem";
 import Loading from "./Loading";
+import BookmarkIconButton from "./bookmark/BookmarkIconButton";
 
 const JobContent = () => {
   const { jobItem, isLoading } = useActiveJobItem();
@@ -26,9 +26,7 @@ const JobContent = () => {
               <p className="tracking-tight">{jobItem.company}</p>
             </div>
           </div>
-          <button className="p-2">
-            <BookmarkIcon className="h-5 w-5" />
-          </button>
+          <BookmarkIconButton size="md" />
         </div>
 
         <p className="text-slate-600">{jobItem.description}</p>

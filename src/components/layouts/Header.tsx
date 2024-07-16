@@ -1,4 +1,4 @@
-import BookmarkButton from "../BookmarkButton";
+import BookmarkButton from "../bookmark/BookmarkButton";
 import Logo from "../Logo";
 
 const Header = () => {
