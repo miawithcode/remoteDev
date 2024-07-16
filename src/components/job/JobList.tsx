@@ -1,4 +1,4 @@
-import { TJob } from "../../lib/types";
+import { type TJob } from "../../lib/types";
 import Loading from "../Loading";
 import JobItem from "./JobItem";
 

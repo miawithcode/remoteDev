@@ -1,4 +1,4 @@
-import { TJob } from "../lib/types";
+import { type TJob } from "../lib/types";
 import { BASE_API_URL } from "../lib/constants";
 import { useQuery } from "@tanstack/react-query";
 import { handleError } from "../lib/utils";

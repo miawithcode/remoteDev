@@ -1,5 +1,5 @@
 import { BookmarkIcon } from "@radix-ui/react-icons";
-import { TJob } from "../../lib/types";
+import { type TJob } from "../../lib/types";
 import useActiveId from "../../hooks/useActiveId";
 
 type JobItemProps = {
