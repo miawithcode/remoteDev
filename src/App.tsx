@@ -6,7 +6,7 @@ import Header from "./components/layouts/Header";
 import Main from "./components/layouts/Main";
 import SearchForm from "./components/SearchForm";
 import Sidebar from "./components/Sidebar";
-import useJobs from "./hooks/useJobs";
+import useSearchQuery from "./hooks/useSearchQuery";
 import useDebounce from "./hooks/useDebounce";
 import { Toaster } from "sonner";
 import { RESULTS_PER_PAGE } from "./lib/constants";
@@ -16,7 +16,7 @@ const App = () => {
   // state
   const [searchText, setSearchText] = useState("");
   const debouncedSearchText = useDebounce(searchText, 250);
-  const { jobs, isLoading } = useJobs(debouncedSearchText);
+  const { jobs, isLoading } = useSearchQuery(debouncedSearchText);
   const [currentPage, setCurrentPage] = useState(1);
   const [sortBy, setSortBy] = useState<TSortBy>("relevant");
 

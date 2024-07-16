@@ -34,7 +34,9 @@ const Sidebar = ({
           sortBy={sortBy}
         />
       </div>
-      <JobList jobs={jobs} isLoading={isLoading} />
+      <div className="min-h-[62vh]">
+        <JobList jobs={jobs} isLoading={isLoading} />
+      </div>
       <PaginationControls
         handlePageChange={handlePageChange}
         currentPage={currentPage}

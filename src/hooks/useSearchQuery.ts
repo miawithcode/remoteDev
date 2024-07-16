@@ -22,7 +22,7 @@ const fetchJobs = async (searchText: string): Promise<JobsAPIResponse> => {
   return data;
 };
 
-const useJobs = (searchText: string) => {
+const useSearchQuery = (searchText: string) => {
   const { data, isInitialLoading } = useQuery(
     ["jobs", searchText],
     () => fetchJobs(searchText),
@@ -38,4 +38,4 @@ const useJobs = (searchText: string) => {
   return { jobs: data?.jobItems, isLoading: isInitialLoading } as const;
 };
 
-export default useJobs;
+export default useSearchQuery;
