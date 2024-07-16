@@ -26,7 +26,7 @@ const JobContent = () => {
               <p className="tracking-tight">{jobItem.company}</p>
             </div>
           </div>
-          <BookmarkIconButton size="md" />
+          <BookmarkIconButton size="md" id={jobItem.id} />
         </div>
 
         <p className="text-slate-600">{jobItem.description}</p>

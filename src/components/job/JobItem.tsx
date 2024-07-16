@@ -24,7 +24,7 @@ const JobItem = ({ job }: JobItemProps) => {
           <p className="text-sm text-slate-400">{job.daysAgo}d</p>
         </div>
         <div>
-          <BookmarkIconButton />
+          <BookmarkIconButton id={job.id} />
         </div>
       </a>
     </li>
