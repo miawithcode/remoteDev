@@ -17,6 +17,7 @@ const App = () => {
   const debouncedSearchText = useDebounce(searchText, 250);
   const { jobs, isLoading } = useJobs(debouncedSearchText);
   const [currentPage, setCurrentPage] = useState(1);
+  const [sortBy, setSortBy] = useState<"relevant" | "recent">("relevant");
 
   // derived / computed state
   const totalNumberOfResults = jobs?.length || 0;
@@ -36,6 +37,10 @@ const App = () => {
     }
   };
 
+  const handleSortByChange = (newSortBy: "relevant" | "recent") => {
+    setSortBy(newSortBy);
+  };
+
   return (
     <Background>
       <Main>
@@ -51,6 +56,8 @@ const App = () => {
               totalNumberOfPages={totalNumberOfPages}
               handlePageChange={handlePageChange}
               currentPage={currentPage}
+              handleSortByChange={handleSortByChange}
+              sortBy={sortBy}
             />
             <JobContent />
           </div>

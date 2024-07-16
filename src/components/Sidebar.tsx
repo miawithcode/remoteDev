@@ -11,6 +11,8 @@ type SidebarProps = {
   totalNumberOfPages: number;
   handlePageChange: (direction: "next" | "previous") => void;
   currentPage: number;
+  handleSortByChange: (newSortBy: "relevant" | "recent") => void;
+  sortBy: "relevant" | "recent";
 };
 
 const Sidebar = ({
@@ -20,12 +22,17 @@ const Sidebar = ({
   totalNumberOfPages,
   handlePageChange,
   currentPage,
+  handleSortByChange,
+  sortBy,
 }: SidebarProps) => {
   return (
     <aside className="relative w-80 border-r border-slate-200">
       <div className="flex items-center justify-between border-b border-slate-200 p-2 text-sm">
         <ResultsCount totalNumberOfResults={totalNumberOfResults} />
-        <SortingControls />
+        <SortingControls
+          handleSortByChange={handleSortByChange}
+          sortBy={sortBy}
+        />
       </div>
       <JobList jobs={jobs} isLoading={isLoading} />
       <PaginationControls
