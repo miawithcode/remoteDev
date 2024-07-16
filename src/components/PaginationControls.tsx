@@ -12,7 +12,7 @@ const PaginationControls = ({
   totalNumberOfPages,
 }: PaginationControlsProps) => {
   return (
-    <div className="flex h-[49px] w-full justify-between border-t px-2 py-3 text-sm">
+    <div className="flex h-[41px] w-full items-center justify-between border-t p-2 text-sm">
       {currentPage > 1 ? (
         <PaginationButton
           direction={"previous"}
@@ -49,7 +49,7 @@ const PaginationButton = ({
   return (
     <button
       onClick={onClick}
-      className="flex items-center gap-1 rounded-xl bg-slate-100 px-2 py-1 text-xs text-slate-600 transition hover:bg-slate-200"
+      className="flex h-fit items-center gap-1 rounded-xl bg-slate-100 px-2 py-1 text-xs text-slate-600 transition hover:bg-slate-200"
     >
       {direction === "next" && (
         <>

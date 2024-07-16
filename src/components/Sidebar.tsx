@@ -23,7 +23,7 @@ const Sidebar = ({
 }: SidebarProps) => {
   return (
     <aside className="relative w-80 border-r border-slate-200">
-      <div className="flex justify-between border-b border-slate-200 p-2 text-sm">
+      <div className="flex items-center justify-between border-b border-slate-200 p-2 text-sm">
         <ResultsCount totalNumberOfResults={totalNumberOfResults} />
         <SortingControls />
       </div>
