@@ -13,19 +13,40 @@ const SortingControls = ({
   return (
     <div className="flex items-center">
       <ArrowsUpDownIcon className="mr-1 h-3 w-3" />
-      <button
+      <SortingControlsButton
         onClick={() => handleSortByChange("relevant")}
-        className={`rounded px-1 py-1 ${sortBy === "relevant" && "bg-slate-200"}`}
+        isActive={sortBy === "relevant"}
       >
         Relevant
-      </button>
-      <button
+      </SortingControlsButton>
+      <SortingControlsButton
         onClick={() => handleSortByChange("recent")}
-        className={`rounded px-2 py-1 ${sortBy === "recent" && "bg-slate-200"}`}
+        isActive={sortBy === "recent"}
       >
         Recent
-      </button>
+      </SortingControlsButton>
     </div>
   );
 };
 export default SortingControls;
+
+type SortingControlsButtonProps = {
+  onClick: () => void;
+  isActive: boolean;
+  children: React.ReactNode;
+};
+
+const SortingControlsButton = ({
+  onClick,
+  isActive,
+  children,
+}: SortingControlsButtonProps) => {
+  return (
+    <button
+      onClick={onClick}
+      className={`rounded px-2 py-1 ${isActive && "bg-slate-200"}`}
+    >
+      {children}
+    </button>
+  );
+};
