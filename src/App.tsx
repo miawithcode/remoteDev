@@ -10,7 +10,7 @@ import useJobs from "./hooks/useJobs";
 import useDebounce from "./hooks/useDebounce";
 import { Toaster } from "sonner";
 import { RESULTS_PER_PAGE } from "./lib/constants";
-import { type TDirection, type TSortBy } from "./lib/types";
+import { type TPageDirection, type TSortBy } from "./lib/types";
 
 const App = () => {
   // state
@@ -37,7 +37,7 @@ const App = () => {
   );
 
   // event handlers / actions
-  const handlePageChange = (direction: TDirection) => {
+  const handlePageChange = (direction: TPageDirection) => {
     if (direction === "next") {
       setCurrentPage((prev) => prev + 1);
     } else if (direction === "previous") {

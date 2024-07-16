@@ -1,4 +1,4 @@
-import { type TSortBy, type TDirection, type TJob } from "../lib/types";
+import { type TSortBy, type TPageDirection, type TJob } from "../lib/types";
 import JobList from "./job/JobList";
 import PaginationControls from "./PaginationControls";
 import ResultsCount from "./ResultsCount";
@@ -9,7 +9,7 @@ type SidebarProps = {
   isLoading: boolean;
   totalNumberOfResults: number;
   totalNumberOfPages: number;
-  handlePageChange: (direction: TDirection) => void;
+  handlePageChange: (direction: TPageDirection) => void;
   currentPage: number;
   handleSortByChange: (newSortBy: TSortBy) => void;
   sortBy: TSortBy;
