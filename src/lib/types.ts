@@ -17,3 +17,5 @@ export type TJobItem = TJob & {
   reviews: string[];
   salary: string;
 };
+
+export type TSortBy = "relevant" | "recent";

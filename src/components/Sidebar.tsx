@@ -1,4 +1,4 @@
-import { TJob } from "../lib/types";
+import { type TSortBy, TJob } from "../lib/types";
 import JobList from "./job/JobList";
 import PaginationControls from "./PaginationControls";
 import ResultsCount from "./ResultsCount";
@@ -11,8 +11,8 @@ type SidebarProps = {
   totalNumberOfPages: number;
   handlePageChange: (direction: "next" | "previous") => void;
   currentPage: number;
-  handleSortByChange: (newSortBy: "relevant" | "recent") => void;
-  sortBy: "relevant" | "recent";
+  handleSortByChange: (newSortBy: TSortBy) => void;
+  sortBy: TSortBy;
 };
 
 const Sidebar = ({

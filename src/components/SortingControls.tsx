@@ -1,8 +1,9 @@
 import { ArrowsUpDownIcon } from "@heroicons/react/24/outline";
+import { type TSortBy } from "../lib/types";
 
 type SortingControlsProps = {
-  handleSortByChange: (newSortBy: "relevant" | "recent") => void;
-  sortBy: "relevant" | "recent";
+  handleSortByChange: (newSortBy: TSortBy) => void;
+  sortBy: TSortBy;
 };
 
 const SortingControls = ({

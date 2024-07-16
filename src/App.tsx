@@ -10,6 +10,7 @@ import useJobs from "./hooks/useJobs";
 import useDebounce from "./hooks/useDebounce";
 import { Toaster } from "sonner";
 import { RESULTS_PER_PAGE } from "./lib/constants";
+import { type TSortBy } from "./lib/types";
 
 const App = () => {
   // state
@@ -17,16 +18,23 @@ const App = () => {
   const debouncedSearchText = useDebounce(searchText, 250);
   const { jobs, isLoading } = useJobs(debouncedSearchText);
   const [currentPage, setCurrentPage] = useState(1);
-  const [sortBy, setSortBy] = useState<"relevant" | "recent">("relevant");
+  const [sortBy, setSortBy] = useState<TSortBy>("relevant");
 
   // derived / computed state
   const totalNumberOfResults = jobs?.length || 0;
   const totalNumberOfPages = totalNumberOfResults / RESULTS_PER_PAGE;
-  const slicedJobs =
-    jobs?.slice(
-      currentPage * RESULTS_PER_PAGE - RESULTS_PER_PAGE,
-      currentPage * RESULTS_PER_PAGE,
-    ) || [];
+  const sortedJobs =
+    jobs?.sort((a, b) => {
+      if (sortBy === "relevant") {
+        return b.relevanceScore - a.relevanceScore;
+      } else {
+        return a.daysAgo - b.daysAgo;
+      }
+    }) || [];
+  const sortedAndSlicedJobs = sortedJobs.slice(
+    currentPage * RESULTS_PER_PAGE - RESULTS_PER_PAGE,
+    currentPage * RESULTS_PER_PAGE,
+  );
 
   // event handlers / actions
   const handlePageChange = (direction: "next" | "previous") => {
@@ -37,7 +45,8 @@ const App = () => {
     }
   };
 
-  const handleSortByChange = (newSortBy: "relevant" | "recent") => {
+  const handleSortByChange = (newSortBy: TSortBy) => {
+    setCurrentPage(1);
     setSortBy(newSortBy);
   };
 
@@ -50,7 +59,7 @@ const App = () => {
           <SearchForm setSearchText={setSearchText} searchText={searchText} />
           <div className="flex h-full">
             <Sidebar
-              jobs={slicedJobs}
+              jobs={sortedAndSlicedJobs}
               isLoading={isLoading}
               totalNumberOfResults={totalNumberOfResults}
               totalNumberOfPages={totalNumberOfPages}
