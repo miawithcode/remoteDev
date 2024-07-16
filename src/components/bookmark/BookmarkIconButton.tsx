@@ -15,9 +15,15 @@ const BookmarkIconButton = ({ size = "sm", id }: BookmarkIconButtonProps) => {
   const { handleToggleBookmark, bookmarkIds } = useBookmarkContext();
 
   return (
-    <button onClick={() => handleToggleBookmark(id)}>
+    <button
+      onClick={(e) => {
+        handleToggleBookmark(id);
+        e.stopPropagation();
+        e.preventDefault();
+      }}
+    >
       <BookmarkFilledIcon
-        className={`${sizeClassName[size]} text-slate-200 ${bookmarkIds.includes(id) && "text-slate-900"}`}
+        className={`${sizeClassName[size]} text-slate-200 ${bookmarkIds.includes(id) && "text-slate-700"}`}
       />
     </button>
   );
