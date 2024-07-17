@@ -1,13 +1,11 @@
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
+import useSearchTextContext from "../hooks/useSearchTextContext";
 
-type SearchFormProps = {
-  searchText: string;
-  setSearchText: React.Dispatch<React.SetStateAction<string>>;
-};
+const SearchForm = () => {
+  const { searchText, handleChangeSearchText } = useSearchTextContext();
 
-const SearchForm = ({ searchText, setSearchText }: SearchFormProps) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchText(e.target.value);
+    handleChangeSearchText(e.target.value);
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {

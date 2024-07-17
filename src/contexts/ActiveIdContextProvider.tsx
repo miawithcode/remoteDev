@@ -1,13 +1,13 @@
 import { createContext } from "react";
 import useActiveId from "../hooks/useActiveId";
 
-export const ActiveIdContext = createContext<TBookmarkContext | null>(null);
+export const ActiveIdContext = createContext<TActiveIdContext | null>(null);
 
 type ActiveIdContextProviderProps = {
   children: React.ReactNode;
 };
 
-type TBookmarkContext = {
+type TActiveIdContext = {
   activeId: number | null;
 };
 

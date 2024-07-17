@@ -7,7 +7,6 @@ import Main from "./components/layouts/Main";
 import SearchForm from "./components/SearchForm";
 import Sidebar from "./components/layouts/Sidebar";
 import useSearchQuery from "./hooks/useSearchQuery";
-import useDebounce from "./hooks/useDebounce";
 import { Toaster } from "sonner";
 import { RESULTS_PER_PAGE } from "./lib/constants";
 import { type TPageDirection, type TSortBy } from "./lib/types";
@@ -18,8 +17,6 @@ import PaginationControls from "./components/PaginationControls";
 
 const App = () => {
   // state
-  const [searchText, setSearchText] = useState("");
-  const debouncedSearchText = useDebounce(searchText, 250);
   const { jobs, isLoading } = useSearchQuery(debouncedSearchText);
   const [currentPage, setCurrentPage] = useState(1);
   const [sortBy, setSortBy] = useState<TSortBy>("relevant");
@@ -59,7 +56,7 @@ const App = () => {
         <Header />
 
         <div className="rounded-lg border border-slate-200 bg-white">
-          <SearchForm setSearchText={setSearchText} searchText={searchText} />
+          <SearchForm />
 
           <div className="flex h-full">
             <Sidebar>
