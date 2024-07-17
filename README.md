@@ -1,4 +1,30 @@
-# 3 ways of closing popover on click outside
+# Popover
+
+## Portal
+
+> 通常会为 popover 和 modal 创建 Portal
+
+````tsx
+import { createPortal } from "react-dom";
+
+const BookmarkPopover = forwardRef<HTMLDivElement>(function (_, ref) {
+  const { bookmarkJobs, isLoading } = useBookmarkContext();
+
+  return createPortal(
+    <div
+      ref={ref}
+      className="absolute right-0 top-10 w-80 rounded border border-slate-200 bg-white shadow"
+    >
+      {bookmarkJobs.length === 0 && !isLoading && <EmptyBookmark />}
+      <JobList jobs={bookmarkJobs} isLoading={isLoading} />
+    </div>,
+    document.body
+  );
+});
+export default BookmarkPopover;
+``
+
+## 3 ways of closing popover on click outside
 
 1. using id selector - easiest, but not react way
 2. using useRef - typically
@@ -24,7 +50,7 @@ useEffect(() => {
 
   return () => document.removeEventListener("click", handleClick);
 }, []);
-```
+````
 
 - `e.target.closest` - 返回触发事件元素的最近的符合该选择器的祖先元素（包括自身），如果没有符合的元素，返回 `null`。
 - `e.target instanceof HTMLElement` - 必须确保 `e.target` 是一个 HTMLElement 类型的实例才能使用 `closest` 方法。
