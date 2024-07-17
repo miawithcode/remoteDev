@@ -5,7 +5,10 @@ const BookmarkPopover = () => {
   const { bookmarkJobs, isLoading } = useBookmarkContext();
 
   return (
-    <div className="absolute right-0 top-10 w-80 rounded border border-slate-200 bg-white shadow">
+    <div
+      id="bookmark-popover"
+      className="absolute right-0 top-10 w-80 rounded border border-slate-200 bg-white shadow"
+    >
       {bookmarkJobs.length === 0 && !isLoading && <EmptyBookmark />}
       <JobList jobs={bookmarkJobs} isLoading={isLoading} />
     </div>
