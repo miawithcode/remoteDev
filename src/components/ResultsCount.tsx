@@ -1,8 +1,8 @@
-type ResultsCountProps = {
-  totalNumberOfResults: number;
-};
+import useJobsContext from "../hooks/useJobsContext";
 
-const ResultsCount = ({ totalNumberOfResults }: ResultsCountProps) => {
+const ResultsCount = () => {
+  const { totalNumberOfResults } = useJobsContext();
+
   return (
     <div>
       <span className="font-semibold">{totalNumberOfResults}</span> results

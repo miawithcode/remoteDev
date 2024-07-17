@@ -1,24 +1,18 @@
 import { ArrowLeftIcon, ArrowRightIcon } from "@radix-ui/react-icons";
 import { type TPageDirection } from "../lib/types";
+import useJobsContext from "../hooks/useJobsContext";
 
-type PaginationControlsProps = {
-  handlePageChange: (direction: TPageDirection) => void;
-  currentPage: number;
-  totalNumberOfPages: number;
-};
+const PaginationControls = () => {
+  const { currentPage, totalNumberOfPages, handleChangePage } =
+    useJobsContext();
 
-const PaginationControls = ({
-  handlePageChange,
-  currentPage,
-  totalNumberOfPages,
-}: PaginationControlsProps) => {
   return (
     <div className="flex h-[41px] w-full items-center justify-between border-t p-2 text-sm">
       {currentPage > 1 ? (
         <PaginationButton
           direction={"previous"}
           currentPage={currentPage}
-          onClick={() => handlePageChange("previous")}
+          onClick={() => handleChangePage("previous")}
         />
       ) : (
         <div></div>
@@ -28,7 +22,7 @@ const PaginationControls = ({
         <PaginationButton
           direction={"next"}
           currentPage={currentPage}
-          onClick={() => handlePageChange("next")}
+          onClick={() => handleChangePage("next")}
         />
       )}
     </div>
