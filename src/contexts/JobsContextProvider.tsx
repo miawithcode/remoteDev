@@ -1,4 +1,4 @@
-import { createContext, useMemo, useState } from "react";
+import { createContext, useCallback, useMemo, useState } from "react";
 import useSearchQuery from "../hooks/useSearchQuery";
 import { RESULTS_PER_PAGE } from "../lib/constants";
 import { type TSortBy, type TPageDirection, type TJob } from "../lib/types";
@@ -54,18 +54,18 @@ const JobsContextProvider = ({ children }: JobsContextProviderProps) => {
   );
 
   // event handlers / actions
-  const handleChangePage = (direction: TPageDirection) => {
+  const handleChangePage = useCallback((direction: TPageDirection) => {
     if (direction === "next") {
       setCurrentPage((prev) => prev + 1);
     } else if (direction === "previous") {
       setCurrentPage((prev) => prev - 1);
     }
-  };
+  }, []);
 
-  const handleChangeSortBy = (newSortBy: TSortBy) => {
+  const handleChangeSortBy = useCallback((newSortBy: TSortBy) => {
     setCurrentPage(1);
     setSortBy(newSortBy);
-  };
+  }, []);
 
   const contextValue = useMemo(
     () => ({
