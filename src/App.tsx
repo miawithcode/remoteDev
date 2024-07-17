@@ -8,8 +8,8 @@ import Sidebar from "./components/layouts/Sidebar";
 import { Toaster } from "sonner";
 import ResultsCount from "./components/ResultsCount";
 import SortingControls from "./components/SortingControls";
-import JobList from "./components/job/JobList";
 import PaginationControls from "./components/PaginationControls";
+import JobListData from "./components/job/JobListData";
 
 const App = () => {
   return (
@@ -27,7 +27,7 @@ const App = () => {
                 <SortingControls />
               </div>
               <div className="min-h-[62vh]">
-                <JobList jobs={sortedAndSlicedJobs} isLoading={isLoading} />
+                <JobListData />
               </div>
               <PaginationControls />
             </Sidebar>
