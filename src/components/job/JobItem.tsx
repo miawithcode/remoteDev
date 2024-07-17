@@ -1,13 +1,13 @@
 import { type TJob } from "../../lib/types";
-import useActiveId from "../../hooks/useActiveId";
 import BookmarkIconButton from "../bookmark/BookmarkIconButton";
+import useActiveIdContext from "../../hooks/useActiveIdContext";
 
 type JobItemProps = {
   job: TJob;
 };
 
 const JobItem = ({ job }: JobItemProps) => {
-  const activeId = useActiveId();
+  const { activeId } = useActiveIdContext();
   const isActive = activeId === job.id;
 
   return (
