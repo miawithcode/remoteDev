@@ -67,21 +67,31 @@ const JobsContextProvider = ({ children }: JobsContextProviderProps) => {
     setSortBy(newSortBy);
   };
 
+  const contextValue = useMemo(
+    () => ({
+      sortedAndSlicedJobs,
+      isLoading,
+      totalNumberOfResults,
+      sortBy,
+      handleChangeSortBy,
+      currentPage,
+      handleChangePage,
+      totalNumberOfPages,
+    }),
+    [
+      sortedAndSlicedJobs,
+      isLoading,
+      totalNumberOfResults,
+      sortBy,
+      handleChangeSortBy,
+      currentPage,
+      handleChangePage,
+      totalNumberOfPages,
+    ],
+  );
+
   return (
-    <JobsContext.Provider
-      value={{
-        sortedAndSlicedJobs,
-        isLoading,
-        totalNumberOfResults,
-        sortBy,
-        handleChangeSortBy,
-        currentPage,
-        handleChangePage,
-        totalNumberOfPages,
-      }}
-    >
-      {children}
-    </JobsContext.Provider>
+    <JobsContext.Provider value={contextValue}>{children}</JobsContext.Provider>
   );
 };
 export default JobsContextProvider;
