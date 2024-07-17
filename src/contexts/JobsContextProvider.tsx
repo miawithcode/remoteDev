@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useMemo, useState } from "react";
 import useSearchQuery from "../hooks/useSearchQuery";
 import { RESULTS_PER_PAGE } from "../lib/constants";
 import { type TSortBy, type TPageDirection, type TJob } from "../lib/types";
@@ -33,16 +33,24 @@ const JobsContextProvider = ({ children }: JobsContextProviderProps) => {
   // derived / computed state
   const totalNumberOfResults = jobs?.length || 0;
   const totalNumberOfPages = totalNumberOfResults / RESULTS_PER_PAGE;
-  const sortedJobs = [...(jobs || [])]?.sort((a, b) => {
-    if (sortBy === "relevant") {
-      return b.relevanceScore - a.relevanceScore;
-    } else {
-      return a.daysAgo - b.daysAgo;
-    }
-  });
-  const sortedAndSlicedJobs = sortedJobs.slice(
-    currentPage * RESULTS_PER_PAGE - RESULTS_PER_PAGE,
-    currentPage * RESULTS_PER_PAGE,
+  const sortedJobs = useMemo(
+    () =>
+      [...(jobs || [])]?.sort((a, b) => {
+        if (sortBy === "relevant") {
+          return b.relevanceScore - a.relevanceScore;
+        } else {
+          return a.daysAgo - b.daysAgo;
+        }
+      }),
+    [jobs, sortBy],
+  );
+  const sortedAndSlicedJobs = useMemo(
+    () =>
+      sortedJobs.slice(
+        currentPage * RESULTS_PER_PAGE - RESULTS_PER_PAGE,
+        currentPage * RESULTS_PER_PAGE,
+      ),
+    [sortedJobs, currentPage],
   );
 
   // event handlers / actions
