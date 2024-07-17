@@ -1,7 +1,7 @@
 import { ClockIcon, MapPinIcon, WalletIcon } from "@heroicons/react/24/outline";
-import useActiveJobItem from "../hooks/useActiveJobItem";
-import Loading from "./Loading";
-import BookmarkIconButton from "./bookmark/BookmarkIconButton";
+import useActiveJobItem from "../../hooks/useActiveJobItem";
+import Loading from "../Loading";
+import BookmarkIconButton from "../bookmark/BookmarkIconButton";
 
 const JobContent = () => {
   const { jobItem, isLoading } = useActiveJobItem();

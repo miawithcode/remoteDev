@@ -1,16 +1,20 @@
 import { useState } from "react";
 import Background from "./components/Background";
-import JobContent from "./components/JobContent";
+import JobContent from "./components/layouts/JobContent";
 import Footer from "./components/layouts/Footer";
 import Header from "./components/layouts/Header";
 import Main from "./components/layouts/Main";
 import SearchForm from "./components/SearchForm";
-import Sidebar from "./components/Sidebar";
+import Sidebar from "./components/layouts/Sidebar";
 import useSearchQuery from "./hooks/useSearchQuery";
 import useDebounce from "./hooks/useDebounce";
 import { Toaster } from "sonner";
 import { RESULTS_PER_PAGE } from "./lib/constants";
 import { type TPageDirection, type TSortBy } from "./lib/types";
+import ResultsCount from "./components/ResultsCount";
+import SortingControls from "./components/SortingControls";
+import JobList from "./components/job/JobList";
+import PaginationControls from "./components/PaginationControls";
 
 const App = () => {
   // state
@@ -56,17 +60,25 @@ const App = () => {
 
         <div className="rounded-lg border border-slate-200 bg-white">
           <SearchForm setSearchText={setSearchText} searchText={searchText} />
+
           <div className="flex h-full">
-            <Sidebar
-              jobs={sortedAndSlicedJobs}
-              isLoading={isLoading}
-              totalNumberOfResults={totalNumberOfResults}
-              totalNumberOfPages={totalNumberOfPages}
-              handlePageChange={handlePageChange}
-              currentPage={currentPage}
-              handleSortByChange={handleSortByChange}
-              sortBy={sortBy}
-            />
+            <Sidebar>
+              <div className="flex items-center justify-between border-b border-slate-200 p-2 text-sm">
+                <ResultsCount totalNumberOfResults={totalNumberOfResults} />
+                <SortingControls
+                  handleSortByChange={handleSortByChange}
+                  sortBy={sortBy}
+                />
+              </div>
+              <div className="min-h-[62vh]">
+                <JobList jobs={sortedAndSlicedJobs} isLoading={isLoading} />
+              </div>
+              <PaginationControls
+                handlePageChange={handlePageChange}
+                currentPage={currentPage}
+                totalNumberOfPages={totalNumberOfPages}
+              />
+            </Sidebar>
             <JobContent />
           </div>
         </div>
