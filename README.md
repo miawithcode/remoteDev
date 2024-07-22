@@ -2,9 +2,9 @@
 
 ## Portal
 
-> 通常会为 popover 和 modal 创建 Portal
+通常会为 popover 和 modal 创建 Portal
 
-````tsx
+```tsx
 import { createPortal } from "react-dom";
 
 const BookmarkPopover = forwardRef<HTMLDivElement>(function (_, ref) {
@@ -22,7 +22,7 @@ const BookmarkPopover = forwardRef<HTMLDivElement>(function (_, ref) {
   );
 });
 export default BookmarkPopover;
-``
+```
 
 ## 3 ways of closing popover on click outside
 
@@ -30,7 +30,7 @@ export default BookmarkPopover;
 2. using useRef - typically
 3. using a custom hook
 
-## Method 1: using id selector
+### Method 1: using id selector
 
 > 给整个文档添加点击监听事件，点击事件发生后，关闭 popover。再用 `e.target.closet` 和 id 选择器排除 `#bookmark-btn` 元素和 `#bookmark-popover` 元素，实现 Close popover on click outside。
 
@@ -50,12 +50,12 @@ useEffect(() => {
 
   return () => document.removeEventListener("click", handleClick);
 }, []);
-````
+```
 
 - `e.target.closest` - 返回触发事件元素的最近的符合该选择器的祖先元素（包括自身），如果没有符合的元素，返回 `null`。
 - `e.target instanceof HTMLElement` - 必须确保 `e.target` 是一个 HTMLElement 类型的实例才能使用 `closest` 方法。
 
-## Method 2: using useRef
+### Method 2: using useRef
 
 > 给整个文档添加点击监听事件，点击事件发生后，关闭 popover。再用 `useRef` 排除 bookmark button 按钮元素和 bookmark popover元素，实现 Close popover on click outside。
 
@@ -103,7 +103,7 @@ useEffect(() => {
   export default BookmarkPopover;
   ```
 
-## Method 3: using custom hook
+### Method 3: using custom hook
 
 ```tsx
 // BookmarkButton.tsx
