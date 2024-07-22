@@ -21,6 +21,7 @@ const useJobItems = (ids: number[]) => {
   //Other ways to filter out undefined values:
   // .filter((jobItem) => !!jobItem);
   // .filter((jobItem) => Boolean(jobItem));
+  // .filter((jobItem) => Boolean(jobItem)) as JobItem[];
   const isLoading = results.some((result) => result.isLoading);
 
   return { jobItems, isLoading };
